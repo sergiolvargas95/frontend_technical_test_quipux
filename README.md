@@ -2,6 +2,15 @@
 
 Frontend de la aplicación **Playlist**, desarrollada como parte de una **prueba técnica**, utilizando **Angular** y **Bootstrap 5**. Esta aplicación consume un backend en Java con autenticación y autorización basada en roles.
 
+### Inicio de Sesión
+<img width="1910" height="941" alt="image" src="https://github.com/user-attachments/assets/432cf686-4b3a-4e80-8256-1cb55d887bcd" />
+
+### Dashboard
+<img width="1911" height="940" alt="image" src="https://github.com/user-attachments/assets/bef41ac3-a732-4bd3-8abb-b66daa02b881" />
+
+### Detalle de las listas de canciones
+<img width="1915" height="956" alt="image" src="https://github.com/user-attachments/assets/ba26761c-b4db-4988-bc63-6b1b3f13a81b" />
+
 ---
 
 ## 🚀 Tecnologías utilizadas
@@ -131,6 +140,7 @@ src/
  │   │   └── services/
  │   ├── pages/
  │   │   ├── login/
+ │   │   ├── playlists-detail/
  │   │   └── playlists/
  │   └── app.module.ts
  ├── assets/
