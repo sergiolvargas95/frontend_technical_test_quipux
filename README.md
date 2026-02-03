@@ -1,28 +1,159 @@
-# Frontend
+# 🎵 Playlist Frontend App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
+Frontend de la aplicación **Playlist**, desarrollada como parte de una **prueba técnica**, utilizando **Angular** y **Bootstrap 5**. Esta aplicación consume un backend en Java con autenticación y autorización basada en roles.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Tecnologías utilizadas
 
-## Code scaffolding
+* **Angular**
+* **TypeScript**
+* **Bootstrap 5**
+* **RxJS**
+* **HTML / SCSS**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 📌 Funcionalidades
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 🔐 Autenticación
 
-## Running unit tests
+* Login de usuario
+* Manejo de sesión mediante **JWT**
+* Interceptor HTTP para adjuntar el token a cada request
+* Manejo de errores **401** y **403**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 🎶 Playlists
 
-## Running end-to-end tests
+* Crear listas de reproducción con múltiples canciones
+* Visualizar playlists registradas
+* Eliminar playlists (solo usuarios con rol **ADMIN**)
+* Búsqueda de playlists por nombre
+* Visualización del detalle de una playlist
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 🛡️ Autorización
 
-## Further help
+* Acciones protegidas por backend
+* Manejo de errores **403 Forbidden** con mensajes claros en la UI
+* Feedback visual al usuario cuando no tiene permisos
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# frontend_technical_test_quipux
+---
+
+## 🧭 Vistas principales
+
+* **Login**
+* **Playlists**
+
+  * Crear playlist
+  * Agregar canciones
+  * Listar playlists
+  * Eliminar playlist (admin)
+  * Buscar playlist
+
+---
+
+## ⚙️ Configuración del proyecto
+
+### 📥 Clonar el repositorio
+
+```bash
+git clone https://github.com/sergiolvargas95/frontend_technical_test_quipux.git
+cd playlist-frontend
+```
+
+### 📦 Instalar dependencias
+
+```bash
+npm install
+```
+
+### ▶️ Ejecutar en modo desarrollo
+
+```bash
+ng serve
+```
+
+La aplicación estará disponible en:
+
+```
+http://localhost:4200
+```
+
+---
+
+## 🔗 Conexión con el Backend
+
+Configura la URL del backend en el servicio correspondiente, por ejemplo:
+
+```ts
+private apiUrl = 'http://localhost:8080/api/playlists';
+```
+
+El backend debe exponer endpoints protegidos con Auth Basic.
+
+---
+
+## 🔑 Roles soportados
+
+* **ADMIN**: puede crear y eliminar playlists
+* **USER**: solo puede visualizar playlists
+
+Las acciones no autorizadas son manejadas mediante mensajes de error claros para el usuario.
+
+---
+
+## 🧪 Manejo de errores
+
+* **401 Unauthorized** → sesión inválida o expirada
+* **403 Forbidden** → usuario sin permisos
+
+Los errores son interceptados y manejados sin romper la experiencia de usuario.
+
+---
+
+## 🎨 UI / UX
+
+* Diseño **minimalista**
+* Componentes estilizados con **Bootstrap 5**
+* Mensajes informativos cuando no existen playlists
+* Favicon personalizado en formato PNG
+
+---
+
+## 📄 Estructura del proyecto
+
+```
+src/
+ ├── app/
+ │   ├── core/
+ │   │   ├── interceptors/
+ │   │   ├── models/
+ │   │   └── services/
+ │   ├── pages/
+ │   │   ├── login/
+ │   │   └── playlists/
+ │   └── app.module.ts
+ ├── assets/
+ └── index.html
+```
+
+---
+
+## 🧠 Notas finales
+
+Este proyecto prioriza:
+
+* Buenas prácticas
+* Separación de responsabilidades
+* UX clara frente a errores de autorización
+* Código limpio y escalable
+
+---
+
+## ✨ Autor
+
+Desarrollado por **Sergio Vargas** como parte de una prueba técnica de Ingeniería de Software.
+
+---
+
+¡Gracias por revisar este proyecto! 🚀

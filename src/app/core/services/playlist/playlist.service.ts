@@ -27,6 +27,4 @@ export class PlaylistService {
   getByName(name: string) {
     return this.http.get(`${this.baseUrl}/${encodeURIComponent(name)}`);
   }
-
-
 }
