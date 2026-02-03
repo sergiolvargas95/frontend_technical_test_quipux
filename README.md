@@ -152,7 +152,7 @@ Este proyecto prioriza:
 
 ## ✨ Autor
 
-Desarrollado por **Sergio Vargas** como parte de una prueba técnica de Ingeniería de Software.
+Desarrollado por **Sergio Vargas** como parte de una prueba técnica de Ingeniería de Software para la empresa QUIPUX.
 
 ---
 
