@@ -1,6 +1,6 @@
 # 🎵 Playlist Frontend App
 
-Frontend de la aplicación **Playlist**, desarrollada como parte de una **prueba técnica**, utilizando **Angular** y **Bootstrap 5**. Esta aplicación consume un backend en Java con autenticación y autorización basada en roles.
+Frontend de la aplicación **Playlist**, desarrollada como parte de la **prueba técnica** de **Quipux**, utilizando **Angular** y **Bootstrap 5**. Esta aplicación consume un backend en Java con autenticación y autorización basada en roles.
 
 ### Inicio de Sesión
 <img width="1910" height="941" alt="image" src="https://github.com/user-attachments/assets/432cf686-4b3a-4e80-8256-1cb55d887bcd" />
@@ -28,7 +28,7 @@ Frontend de la aplicación **Playlist**, desarrollada como parte de una **prueba
 ### 🔐 Autenticación
 
 * Login de usuario
-* Manejo de sesión mediante **JWT**
+* Manejo de sesión mediante **Auth Basic**
 * Interceptor HTTP para adjuntar el token a cada request
 * Manejo de errores **401** y **403**
 
@@ -53,11 +53,10 @@ Frontend de la aplicación **Playlist**, desarrollada como parte de una **prueba
 * **Login**
 * **Playlists**
 
-  * Crear playlist
+  * Crear playlist (admin)
   * Agregar canciones
   * Listar playlists
   * Eliminar playlist (admin)
-  * Buscar playlist
 
 ---
 
@@ -66,7 +65,7 @@ Frontend de la aplicación **Playlist**, desarrollada como parte de una **prueba
 ### 📥 Clonar el repositorio
 
 ```bash
-git clone https://github.com/sergiolvargas95/frontend_technical_test_quipux.git
+git clone https://github.com/sergiolvargas95/frontend_technical_test_quipux.git playlist-frontend
 cd playlist-frontend
 ```
 
@@ -95,7 +94,7 @@ http://localhost:4200
 Configura la URL del backend en el servicio correspondiente, por ejemplo:
 
 ```ts
-private apiUrl = 'http://localhost:8080/api/playlists';
+private apiUrl = 'http://localhost:8080/api/v1/playlists';
 ```
 
 El backend debe exponer endpoints protegidos con Auth Basic.
