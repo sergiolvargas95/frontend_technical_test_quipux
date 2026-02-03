@@ -1,0 +1,40 @@
+<div class="container my-5">
+
+  <button class="btn btn-link mb-3" (click)="back()">
+    ← Volver a playlists
+  </button>
+
+  <div *ngIf="playlist" class="card shadow">
+    <div class="card-body">
+
+      <h3 class="fw-semibold">{{ playlist.name }}</h3>
+      <p class="text-muted">{{ playlist.description }}</p>
+
+      <hr>
+
+      <h5 class="mb-3">Canciones</h5>
+
+      <div class="row">
+        <div
+          class="col-md-6 mb-3"
+          *ngFor="let song of playlist.songs">
+
+          <div class="border rounded p-3 h-100">
+            <h6 class="fw-semibold">{{ song.title }}</h6>
+            <p class="mb-1">{{ song.artist }} – {{ song.album }}</p>
+            <small class="text-muted">
+              {{ song.genre }} · {{ song.releaseYear }}
+            </small>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+</div>

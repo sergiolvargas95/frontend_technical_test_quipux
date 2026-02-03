@@ -8,12 +8,14 @@ import { PlaylistsComponent } from './pages/playlists/playlists.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { FormsModule } from '@angular/forms';
+import { PlaylistDetailComponent } from './pages/playlist-detail/playlist-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PlaylistsComponent
+    PlaylistsComponent,
+    PlaylistDetailComponent
   ],
   imports: [
     BrowserModule,
