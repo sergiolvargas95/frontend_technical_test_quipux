@@ -1,0 +1,164 @@
+<div class="container my-5">
+
+  <!-- Título -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-semibold mb-0">Playlists</h2>
+
+    <button
+      class="btn btn-outline-danger btn-sm"
+      (click)="logout()">
+      Cerrar sesión
+    </button>
+  </div>
+
+
+  <!-- Detalle de Playlist -->
+  <div *ngIf="selectedPlaylist" class="card shadow mb-5">
+    <div class="card-body">
+
+      <h4 class="fw-semibold mb-1">{{ selectedPlaylist.name }}</h4>
+      <p class="text-muted mb-3">{{ selectedPlaylist.description }}</p>
+
+      <hr>
+
+      <h6 class="mb-3">Canciones</h6>
+
+      <div class="row">
+        <div
+          class="col-md-6 mb-3"
+          *ngFor="let song of selectedPlaylist.songs">
+
+          <div class="border rounded p-3 h-100">
+            <h6 class="fw-semibold mb-1">{{ song.title }}</h6>
+            <p class="mb-1">{{ song.artist }} – {{ song.album }}</p>
+            <small class="text-muted">
+              {{ song.genre }} · {{ song.releaseYear }}
+            </small>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Crear Playlist -->
+  <div class="card shadow-sm mb-5">
+    <div class="card-body">
+
+      <h5 class="card-title mb-3">Nueva Playlist</h5>
+
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <input
+            class="form-control"
+            placeholder="Nombre de la playlist"
+            [(ngModel)]="newPlaylist.name">
+        </div>
+
+        <div class="col-md-6">
+          <input
+            class="form-control"
+            placeholder="Descripción"
+            [(ngModel)]="newPlaylist.description">
+        </div>
+      </div>
+
+      <div *ngIf="error" class="alert alert-danger mt-3">
+        {{ error }}
+      </div>
+
+
+      <div class="d-flex gap-2 mb-3">
+        <button
+          class="btn btn-outline-primary"
+          (click)="addSong()">
+          + Agregar Canción
+        </button>
+
+        <button
+          class="btn btn-primary"
+          [disabled]="!newPlaylist.name || newPlaylist.songs.length === 0"
+          [title]="newPlaylist.songs.length === 0 ? 'Agrega al menos una canción para crear la playlist' : ''"
+          (click)="create()">
+          Crear Playlist
+        </button>
+      </div>
+
+      <!-- Canciones -->
+      <div
+        *ngFor="let song of newPlaylist.songs; let i = index"
+        class="card mb-3 border-light">
+
+        <div class="card-body">
+          <h6 class="fw-semibold mb-3">Canción {{ i + 1 }}</h6>
+
+          <div class="row g-2">
+            <div class="col-md-4">
+              <input class="form-control" placeholder="Título" [(ngModel)]="song.title">
+            </div>
+            <div class="col-md-4">
+              <input class="form-control" placeholder="Artista" [(ngModel)]="song.artist">
+            </div>
+            <div class="col-md-4">
+              <input class="form-control" placeholder="Álbum" [(ngModel)]="song.album">
+            </div>
+            <div class="col-md-4">
+              <input class="form-control" placeholder="Año" [(ngModel)]="song.releaseYear">
+            </div>
+            <div class="col-md-4">
+              <input class="form-control" placeholder="Género" [(ngModel)]="song.genre">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mensaje sin playlists -->
+  <div *ngIf="playlists.length === 0 && !selectedPlaylist"
+       class="alert alert-info text-center">
+    No hay listas registradas en este momento, agrega la primera 🎵
+  </div>
+
+  <div *ngIf="errorDelete" class="alert alert-danger text-center">
+    {{ errorDelete }}
+  </div>
+
+
+  <!-- Listado de Playlists -->
+  <div *ngFor="let p of playlists" class="card shadow-sm mb-3">
+    <div class="card-body">
+
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          <h5
+            class="card-title text-primary mb-1"
+            style="cursor: pointer"
+            (click)="viewDetail(p.name)">
+            {{ p.name }}
+          </h5>
+          <p class="text-muted mb-0">{{ p.description }}</p>
+        </div>
+
+        <button
+          class="btn btn-sm btn-outline-danger"
+          (click)="deletePlaylist(p.name)">
+          Eliminar
+        </button>
+      </div>
+
+      <ul class="list-group list-group-flush mt-3">
+        <li
+          class="list-group-item"
+          *ngFor="let s of p.songs">
+          <strong>{{ s.title }}</strong> – {{ s.artist }}
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>
